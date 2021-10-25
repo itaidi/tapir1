@@ -1,0 +1,81 @@
+
+
+// для тестирования
+
+// обновление git по быстрому
+git add . && git commit -m "readme" && git push
+
+// 📌 удаление всех контейнеров, имеджей, данных докеров включая БД 
+docker rm -f $(docker ps -aq)
+docker rmi $(docker images -a -q)
+docker system prune -a -f
+
+// 📌 клонирование и запуск проекта
+git clone https://github.com/itaidi/tapir1.git
+cd tapir1
+docker-compose up
+
+// установка composer в ручную
+docker run --rm -v "$(pwd):/app" composer install
+
+// 📌 вход в терминал проекта - для команд artisan, composer
+docker exec -it cars_app bash
+docker exec -it cars_app sh
+docker exec -it cars_composer bash
+php artisan migrate
+composer install --ignore-platform-reqs
+
+//  узнать ip контейнеров
+docker network inspect bridge
+// 📌 ping контейнеров внутри через curl
+curl mongodb
+// либо через другие инструменты
+sudo apt install net-tools
+
+// 📌 просмотр портов 
+sudo lsof -i -P -n | grep 80
+// 📌 отключение apache
+/etc/init.d/apache2 stop
+
+// 📌 пересборка проекта (долго)
+docker-compose up --build
+
+// перезапуск контейнеров (быстро)
+docker-compose up
+
+// перезапуск контейнеров как сервис (быстро)
+docker-compose up -d
+
+// вход в mongo
+https://www.mongodb.com/products/compass
+mongodb://root:your_mongodb_root_password@localhost:27017/laravel?authSource=admin
+
+docker exec -it cars_mongodb bash
+mongo --username root --password your_mongodb_root_password --authenticationDatabase admin --host localhost:27017 --port 27017
+show databases
+use laravel
+db.cars.find().limit(1)
+
+// 📌 mongo операторы выборки
+https://metanit.com/nosql/mongodb/2.8.php
+
+// swager редактор
+https://editor.swagger.io/?url=https://raw.githubusercontent.com/itaidi/tapir1/main/docs/swagger.yaml
+
+- возможен экспорт в html, тест запросов
+
+// redoc-cli генератор по swagger файлу
+docker run -it --rm -p 7778:80 -v "$(pwd)/docs":/usr/share/nginx/html/swagger/ -e SPEC_URL=swagger/swagger.yaml redocly/redoc
+
+// использованные команды
+php artisan make:migration create_cars_table
+php artisan migrate 
+php artisan make:model Cars
+php artisan make:factory CarsFactory
+php artisan db:seed
+php artisan make:controller CarsController
+routes/api.php
+http://localhost:7777/api/cars
+
+// поиск php файла в контейнере
+find / -name php.ini

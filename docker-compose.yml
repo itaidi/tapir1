@@ -37,6 +37,7 @@ services:
   # composer & load libs
   composer:
     image: composer:2.1
+    container_name: cars_composer
     volumes:
       - ./src/:/var/www
     working_dir: /var/www
