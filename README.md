@@ -108,7 +108,9 @@ curl запускает файлы `/src/public/check_schedule.php`, и `/src/pu
 Апи эндпоинт здесь - `/app/http/controllers/CarsController.php` и `routes/api.php`
 
 4.1) 
-пришлось создать файл `/src/composer_ready_check.php` проверки загрузки comoser install, т.к. докер контейнеры запускаются асинхронно, - проверка запускается через curl в docker-compose в файле check_update_cars.php (скрипт ожидает, пока скопилируется autoload.php)
+пришлось создать файл `/src/composer_ready_check.php` проверки загрузки `comoser install`, т.к. докер контейнеры запускаются асинхронно, - проверка запускается через curl в docker-compose в файле `check_update_cars.php` (скрипт ожидает, пока скопилируется autoload.php)
+
+
 4.2)
 и отдельный файл который создает laravel.log с нужными правами от сервера, чтобы curl `/src/public/start_commands_preset.php`, запускается перед composer install
 
