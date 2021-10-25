@@ -65,7 +65,16 @@ https://www.mongodb.com/products/compass
 Через терминал - 
 
 `docker exec -it cars_mongodb bash`
-затем ``
+
+затем `mongo --username root --password your_mongodb_root_password --authenticationDatabase admin --host localhost:27017 --port 27017` (подключение к терминалу mongo)
+
+Просмотр данных:
+
+`show databases`
+
+`use laravel`
+
+`db.cars.find().limit(1)` (выведет одну запись)
 
 ---
 
