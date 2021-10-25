@@ -1,0 +1,15 @@
+# version with php in container
+#*/10 * * * * /usr/local/bin/php /var/www/src/artisan schedule:run >> /dev/stdout 2>&1
+
+# version w/o php, curl request
+# artisan:schedule run: 
+# дополнительный таймаут скрипта /bin/timeout -s 2 60 
+* * * * * curl -X 'GET' nginx/check_schedule.php
+
+# direct script run:
+*/10 * * * * curl -X 'GET' nginx/check_update_cars.php
+
+# show message in terminal
+* * * * * echo "cron : artisan schedule:run" >> /var/log/cron.log 2>&1
+
+# An empty line is required at the end of this file for a valid cron file.

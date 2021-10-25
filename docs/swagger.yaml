@@ -1,0 +1,50 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Документация"
+  description: "Документация по тестовому заданию tapir\n\n
+  <h1>Запуск проекта:</h1>
+  
+  1) Клонируйте репозиторий `git clone`\n
+  2) Войти в парпку проекта `cd project`\n
+  3) Запустить сборку `docker-compose up --build` (повторить команду, в случае таймаута загрузки пакетов)\n
+  4) проект http://localhost:7777/ \n
+  
+  5) тестовый запрос http://localhost:7777/api/store?year_from=2000&year_to=2010&price_less=1500000 \n
+"
+
+host: "localhost:7777"
+basePath: "/"
+tags:
+- name: "store"
+  description: "Список всех запросов"
+schemes:
+- "https"
+- "http"
+
+paths:
+ /api/store:
+    get:
+      summary: "Найти автомобили по date_from с date_to, включительно, по price_less"
+      parameters:
+        - in: query
+          name: year_from
+          default: 2000
+          type: integer
+          required: true
+          description: Начальный год* поиска
+        - in: query
+          name: year_to
+          default: 2010
+          type: integer
+          required: true
+          description: Конечный год* поиска
+        - in: query
+          name: price_less
+          default: 1500000
+          type: integer
+          required: true
+          description: Стоимость автомобиля меньше (чем указанное число*)
+      responses:
+        '200':
+          description: Выборка авто по запросу
