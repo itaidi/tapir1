@@ -19,7 +19,6 @@ tags:
 - name: "store"
   description: "Список всех запросов"
 schemes:
-- "https"
 - "http"
 
 paths:

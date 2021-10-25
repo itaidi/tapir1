@@ -5,7 +5,8 @@
 - Laravel v8.6.3
 - composer:2.1
 - php:8.0-fpm
-- 	Ubuntu 20.04.3 LTS (запущено на релизе 20.04)
+- Ubuntu 20.04.3 LTS (запущено на релизе 20.04)
+- в качестве базы данных используется MongoDb и драйвер [jenssegers/mongodb](https://github.com/jenssegers/laravel-mongodb) ^3.8.4, но так же преднастроена mysql, но закомментирована
 
 
 ## Запуск проекта ➡️
@@ -26,10 +27,11 @@
 
 ## 3) 
 
-➡️ открыть - api [http://localhost:7777/api/store ...](http://localhost:7777/api/store?year_from=2000&year_to=2010&price_less=1500000), если сразу не открылось, нужно обновить
+➡️ открыть - api [http://localhost:7777/api/store ...](http://localhost:7777/api/store?year_from=2000&year_to=2010&price_less=1500000), если сразу не открылось, нужно обновить .
 
-📋 открыть api docs в [editor.swagger.io/?url= ...](https://editor.swagger.io/?url=https://editor.swagger.io/?url=https://github.com/itaidi/tapir1/blob/main/docs/swagger.yaml)
+📋 открыть api docs в [editor.swagger.io/?url= ...](https://editor.swagger.io/?url=https://raw.githubusercontent.com/itaidi/tapir1/main/docs/swagger.yaml)
 
+(работает после отображения выполнения миграций в терминал, когда отобразиться `✅ cars_cron   | <pre>Migration table created successfully.`)
 
 ---
 Возможные конфликты при запуске, могут помочь команды:
@@ -43,10 +45,10 @@
 
 ## Swagger file yaml 
 
-- https://github.com/itaidi/tapir1/blob/main/docs/swagger.yaml
+- https://raw.githubusercontent.com/itaidi/tapir1/main/docs/swagger.yaml
 
 ## Edit swgger online 🔍:
-https://editor.swagger.io/?url=https://editor.swagger.io/?url=https://github.com/itaidi/tapir1/blob/main/docs/swagger.yaml (просмотр запросов)
+https://editor.swagger.io/?url=https://raw.githubusercontent.com/itaidi/tapir1/main/docs/swagger.yaml (просмотр запросов)
 
 ## redoc-cli
 Запуск в докере -
